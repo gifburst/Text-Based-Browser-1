@@ -33,7 +33,7 @@ def parse_query(query, stack_of_pages):
                 if not os.path.exists(os.path.join(DIR, url[len("https://"): -len(".com")])):
                     html = requests.get(url).content
                     soup = bs4.BeautifulSoup(html, 'html.parser')
-                    text = ''.join((Fore.BLUE + st.get_text() + Style.RESET_ALL if st.name == 'a' else st.get_text() for st in soup.find_all(TAGS)))
+                    text = ' '.join((Fore.BLUE + st.get_text() + Style.RESET_ALL if st.name == 'a' else st.get_text() for st in soup.find_all(TAGS)))
                     with open(os.path.join(DIR, url[len("https://"): -len(".com")]), "w") as f:
                         f.write(text)
                 else:
